@@ -32,6 +32,28 @@ router.put("/",authMiddleware,async (req,res) => {
     }
 })
 
+router.get("/bulk",async (req,res) => {
+    const filter=req.query.filter || "";
+    try{
+        const users=await User.find({$or:[{
+            firstName:{
+                $regex:new RegExp(filter,'i')
+            }
+        },
+        {
+            lastName:{
+                $regex:new RegExp(filter,'i')
+            }
+        }]},'firstName lastName _id username');
+        res.status(200).json(users);
+    }
+    catch(err){
+        res.send(500).json({
+            message: "Server Issues"
+        })
+    }
+})
+
 const signupRoute=require("./signupRoute");
 const signinRoute=require("./signinRoute");
 
