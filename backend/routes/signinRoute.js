@@ -21,7 +21,7 @@ router.post("/", async (req,res) => {
         if(!user){
             throw new Error;
         }
-        const token=jwt.sign(user._id.toString(),process.env.JWT_KEY);
+        const token=jwt.sign({userId: user._id},process.env.JWT_KEY);
         res.status(200).json({token});
     }
     catch(err){
