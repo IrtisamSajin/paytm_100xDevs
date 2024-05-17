@@ -1,5 +1,5 @@
 const express=require("express");
-const User=require("../db");
+const {User}=require("../db");
 const zod=require("zod");
 
 const router=express.Router();

@@ -1,7 +1,7 @@
 const express=require("express");
 const zod=require("zod");
 const jwt=require("jsonwebtoken");
-const User =require("../db")
+const {User}=require("../db")
 
 const router=express.Router();
 
