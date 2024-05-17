@@ -18,9 +18,7 @@ mongoose.connect(process.env.MONGO_URL)
     console.log(err);
 })
 
-
 app.use("/api/v1",rootRoute);
-
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is listening on port ${process.env.PORT}`)
