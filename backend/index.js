@@ -18,9 +18,7 @@ mongoose.connect(process.env.MONGO_URL)
     console.log(err);
 })
 
-app.get("/",(req,res) => {
-    res.send("Hello world")
-}) 
+
 app.use("/api/v1",rootRoute);
 
 
