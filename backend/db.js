@@ -36,7 +36,7 @@ const accountSchema=new mongoose.Schema({
         required: true
     },
     balance:{
-        type:number,
+        type: Number,
         required: true
     }
 })

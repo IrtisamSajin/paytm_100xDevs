@@ -1,7 +1,7 @@
 const express=require("express");
 const zod=require("zod");
 const jwt=require("jsonwebtoken");
-const {User}=require("../db")
+const {User,Account}=require("../db")
 
 const router=express.Router();
 
@@ -25,6 +25,10 @@ router.post("/",async (req,res) => {
             message: "User created successfully",
             token
         });
+        await Account.create({
+            userId: newUser._id,
+            balance: (1+Math.random()*10000)
+        })
     }catch(err){
         res.status(411).json({
             message: "Email already taken / Incorrect inputs"
