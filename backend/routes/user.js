@@ -9,6 +9,14 @@ router.get("/",authMiddleware,(req,res) => {
     res.send("User Route");
 })
 
+
+const signupRoute=require("./signupRoute");
+const signinRoute=require("./signinRoute");
+
+router.use("/signup",signupRoute);
+router.use("/signin",signinRoute);
+
+
 const updateBody = zod.object({
 	password: zod.string().min(6).optional(),
     firstName: zod.string().optional(),
@@ -53,11 +61,5 @@ router.get("/bulk",async (req,res) => {
         })
     }
 })
-
-const signupRoute=require("./signupRoute");
-const signinRoute=require("./signinRoute");
-
-router.use("/signup",signupRoute);
-router.use("/signin",signinRoute);
 
 module.exports=router;
